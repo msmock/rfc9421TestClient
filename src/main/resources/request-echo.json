@@ -1,0 +1,24 @@
+{
+  "method": "POST",
+  "protocol": "https",
+  "host": "echo.free.beeceptor.com",
+  "path": "/",
+  "ip": "194.230.146.122:51830",
+  "headers": {
+    "Host": "echo.free.beeceptor.com",
+    "User-Agent": "Apache-HttpClient/4.5.14 (Java/17.0.12)",
+    "Content-Length": "36",
+    "Accept-Encoding": "gzip,deflate",
+    "Authorization": "Bearer authorizationToken",
+    "Content-Digest": "sha-512=:d35d065dbd4f02b19e0d56eee641dddd59496cc1cffcc71f888fe77ed8a34e9afa185c721cb799966e9faa78c2897b75878831b73094eaac608854fc2d4f26c7=:",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Signature": "sig1=:+NBrmgYsfkzMEoBkG6hYwroJMokA5S4WPoZUZ9dpJokIY5IA4WtRIxK05FLoGa4zdwcr+VX6IriRrueboMMTvQ==:",
+    "Signature-Input": "sig1=(\"@method\" \"@target-uri\" \"authorization\" \"content-digest\");created=1763324281;keyid=\"snIZq-_NvzkKV-IdiM348BCz_RKdwmufnrPubsKKyio\";tag=\"fapi-2-request\"",
+    "Via": "1.1 Caddy"
+  },
+  "parsedQueryParams": {},
+  "parsedBody": {
+    "username": "mickey-mouse",
+    "password": "daisy"
+  }
+}
