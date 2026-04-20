@@ -23,10 +23,14 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+
+/**
+ * uses plain java.net.HttpClient
+ */
 @SpringBootApplication
 public class Rfc9421TestClientPlain {
 
-    private static final String apiUrl = "https://node-express-tracer.onrender.com/";
+    private static final String apiUrl = "http://localhost:8080/api/verify";;
 
     private static final String SIGNING_KEY =
             "{\n" +
