@@ -32,7 +32,9 @@ import java.util.List;
 @SpringBootApplication
 public class Rfc9421TestClient {
 
-    private static final String apiUrl = "http://localhost:8080/api/verify";
+    // private static final String apiUrl = "http://localhost:8080/api/verify";
+
+    private static final String apiUrl = "https://node-express-tracer.onrender.com/";
 
     private static final String SIGNING_KEY =
             "{\n" +
@@ -61,6 +63,7 @@ public class Rfc9421TestClient {
 
         // create sha256 hash of body elements
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(bodyElements);
+
         String contentAsString = new String(entity.getContent().readAllBytes());
         byte[] contentDigestAsBytes = DigestUtils.sha512(contentAsString);
         String sha512Base64 = Base64.getEncoder().encodeToString(contentDigestAsBytes);
@@ -105,7 +108,7 @@ public class Rfc9421TestClient {
         String signature = signingInfo.getSerializedSignature();
         httpPost.addHeader("Signature", "sig1=" + signature);
 
-        // finally, call the remote endpoint to echo the request data
+        // call the remote token endpoint
         HttpResponse response = httpClient.execute(httpPost);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
@@ -125,6 +128,12 @@ public class Rfc9421TestClient {
                 .build();
 
         DecodedJWT jwt = verifier.verify(result.toString());
+
+        // decode payload
+        Base64.Decoder decoder = Base64.getUrlDecoder();
+        String payload = new String(decoder.decode(jwt.getPayload()));
+        System.out.println("Token payload is: ");
+        System.out.println(payload);
 
         System.out.println("Received data:");
         System.out.println("Issuer: " + jwt.getIssuer());
